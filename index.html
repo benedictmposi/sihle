@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday
+    SIHLE
+</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Floating lights */
+.light{
+    position:fixed;
+    border-radius:60%;
+    background:rgba(255,215,0,0.08);
+    filter:blur(70px);
+    animation:float 10s ease-in-out infinite;
+}
+
+.light:nth-child(1){
+    width:300px;
+    height:300px;
+    left:5%;
+    top:10%;
+}
+
+.light:nth-child(2){
+    width:400px;
+    height:400px;
+    right:5%;
+    bottom:10%;
+    animation-delay:5s;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-40px);
+    }
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    font-size:4rem;
+    font-weight:300;
+    letter-spacing:4px;
+    opacity:0;
+    animation:fadeIn 3s forwards;
+}
+
+.subtitle{
+    margin-top:15px;
+    opacity:0.8;
+    font-size:1.1rem;
+}
+
+.line{
+    width:120px;
+    height:2px;
+    background:white;
+    margin:25px auto;
+    opacity:0.5;
+}
+
+/* Slideshow */
+.slideshow{
+    position:sticky;
+    width:100%;
+    max-width:700px;
+    height:450px;
+    margin:20px auto;
+}
+
+.slide{
+    position:absolute;
+    width:70%;
+    left : 50%;
+    transform:translateX(-50%);
+    height:110%;
+    object-fit:cover;
+    border-radius:20px;
+    opacity:0;
+    transition:opacity 3s ease;
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+.slide.active{
+    opacity:2;
+}
+
+.message{
+    margin-top:40px;
+    font-size:1.25rem;
+    line-height:1.9;
+    max-width:850px;
+    margin-left:auto;
+    margin-right:auto;
+    opacity:0;
+    animation:fadeIn 3s forwards;
+    animation-delay:1s;
+}
+
+.signature{
+    margin-top:30px;
+    font-style:italic;
+    font-size:1.1rem;
+    opacity:0.85;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Floating particles */
+.particle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    border-radius:80%;
+    background:white;
+    opacity:0.4;
+    animation:rise linear infinite;
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:0.5;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    .slideshow{
+        height:300px;
+    }
+
+    .message{
+        font-size:1.05rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="light"></div>
+<div class="light"></div>
+
+<div class="container">
+
+    <h1>Happy Birthday
+        SIHLE
+    </h1>
+
+    <p class="subtitle">
+        Celebrating another remarkable year of your journey
+         <br><br>
+        Not to forget that this is your first Birthday as a Graguate
+    </p>
+
+    <div class="line"></div>
+
+    <!-- PHOTO SLIDESHOW, MP4 -->
+    <div class="video, slideshow">
+        <video autoplay muted playsinline src="MGB.mp4" class="slide active" alt="Memory 1"></video>
+        <video autoplay muted playsinline src="grad_vid.mp4" class="slide" alt="Memory 2"></video>
+        <img src="grad1.jpeg" class="slide" alt="Memory 3">
+        <img src="grad2.jpeg" class="slide" alt="Memory 4">
+        <img src="mgb.jpeg" class="slide" alt="Memory 5">
+        <img src="tat.jpeg" class="slide" alt="Memory 6">
+        <img src="tm.jpeg" class="slide" alt="Memory 7">
+        
+    </div>
+
+    <div class="message">
+        Today is more than a birthday—it is a celebration of the
+        person you are, the lives you have touched, and the
+        experiences that have shaped your journey.
+
+        <br><br>
+
+        May this year bring you meaningful opportunities,
+        continued success, good health, and countless moments
+        of happiness. May you always find the courage to pursue
+        your ambitions and the wisdom to appreciate how far
+        you have already come.
+
+        <br><br>
+
+        Thank you for the memories, the laughter, and the
+        inspiration you bring to those around you. May the year
+        ahead be filled with purpose, peace, and unforgettable
+        moments worth celebrating and most importantly ba skao hurda (mjolo wise).
+
+        <br><br>
+
+        Happy Birthday and best wishes for an exceptional year ahead.
+    </div>
+
+    <div class="signature">
+        with love from Benedict
+    </div>
+
+</div>
+
+<script>
+
+// Photo slideshow
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+}, 4000);
+
+// Floating particles
+for(let i = 0; i < 80; i++){
+
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.animationDuration =
+        (8 + Math.random() * 10) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 8 + "s";
+
+    document.body.appendChild(particle);
+}
+
+</script>
+
+</body>
+</html>
